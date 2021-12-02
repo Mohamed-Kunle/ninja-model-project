@@ -4,8 +4,8 @@
   <!-- <input type="text" ref="name" />
   <button @click="handlerClick">click me</button> -->
   <p>Welcome...</p>
-  <teleport to=".models" v-if="showModel">
-    <Model theme="" @close="toggleModel">
+  <div v-if="showModal">
+    <Modal theme="" @close="toggleModal">
       <!-- Default slot -->
       <h1>Sign up for the Giveaway</h1>
       <h4>Grap your ninja swag for half price</h4>
@@ -15,33 +15,34 @@
         <a href="#">GET NOW!</a>
         <a href="#">MORE NOW!</a>
       </template>
-    </Model>
-  </teleport>
+    </Modal>
+  </div>
 
   <!-- Another model -->
-  <teleport to=".models" v-if="showModelTwo">
-    <Model @close="toggleModelTwo">
+  <div v-if="showModelTwo">
+    <Modal @close="toggleModalTwo">
       <h1>Tesing</h1>
-    </Model>
-  </teleport>
+    </Modal>
+  </div>
 
-  <button @click="toggleModel">Show model</button>
-  <button @click="toggleModelTwo">Show model two</button>
+  <button @click="toggleModal">Show Modal</button>
+  <button @click="toggleModalTwo">Show Modal two</button>
 </template>
 
 <script>
-import Model from './components/Model.vue';
+import Modal from './components/Modal.vue';
+
 export default {
   components: {
-    Model,
+    Modal,
   },
   data() {
     return {
       title: 'MY FIRST VUE APP',
       header: 'Sign up for the Giveaway',
       text: 'Grap your ninja swag for half  price',
-      showModel: false,
-      showModelTwo: false,
+      showModal: false,
+      showModalTwo: false,
     };
   },
   methods: {
@@ -49,19 +50,20 @@ export default {
     //   const input = this.$refs.name;
     //   input.className = "Active";
     // },
-    toggleModel() {
-      this.showModel = !this.showModel;
+    toggleModal() {
+      this.showModal = !this.showModal;
     },
-    toggleModelTwo() {
-      this.showModelTwo = !this.showModelTwo;
+    toggleModalTwo() {
+      this.showModalTwo = !this.showModalTwo;
+
+      console.log(this.showModalTwo);
     },
   },
 };
 </script>
 
 <style>
-#app,
-.models {
+#app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

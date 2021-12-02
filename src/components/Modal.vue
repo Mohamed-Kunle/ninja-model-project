@@ -1,5 +1,5 @@
 <template>
-  <div class="backdrop" @click.self="closeModel">
+  <div class="backdrop" @click.self="$emit('close')">
     <div class="modal" :class="{ sale: theme === 'sale' }">
       <!-- Default slot -->
       <slot>This message will show if no default slot</slot>
@@ -16,7 +16,7 @@
 export default {
   props: ['theme'],
   methods: {
-    closeModel() {
+    closeModal() {
       this.$emit('close');
     },
   },
